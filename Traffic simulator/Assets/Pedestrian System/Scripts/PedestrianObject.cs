@@ -40,23 +40,7 @@ public class PedestrianObject : MonoBehaviour
 	protected float                             m_speedVariation      = 0.0f;
 
 	private bool                                ThresholdReached     { get; set; }
-    /// <summary>
-    /// ///////////////
-    /// </summary>
-    /// 
-
-    public PedestrianNode nextNode;
-    public float maxSteerAngle = 40f;
-    public float maxMotorTorque = 80f;
-    public float currentSpeed;
-    public float maxSpeed = 100;
-    public WheelCollider wheelFL;
-    public WheelCollider wheelFR;
-    public bool carForward = false;
-    public float newSterr;
-    Vector3 dir;
-
-    ///////////
+   
     public enum PathingStatus
 	{
 		RANDOM = 0
@@ -78,7 +62,7 @@ public class PedestrianObject : MonoBehaviour
 	
 	IEnumerator Start () 
 	{
-        nextNode = m_prevPedestrianNodes[m_nodeVisitIndex];
+        //nextNode = m_prevPedestrianNodes[m_nodeVisitIndex];
         if (PedestrianSystem.Instance)
 		{
 		    m_speedVariation    = Random.Range(0.0f, PedestrianSystem.Instance.m_globalSpeedVariation);
