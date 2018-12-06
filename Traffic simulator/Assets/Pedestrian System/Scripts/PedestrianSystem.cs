@@ -162,8 +162,9 @@ public class PedestrianSystem : MonoBehaviour
 		case Tooltip.ANCHOR:
 		{
 			if(TooltipAnchor)
-			{
-				ShowTooltip(Tooltip.ANCHOR, a_show);
+                    {
+                        
+                        ShowTooltip(Tooltip.ANCHOR, a_show);
 				TooltipAnchor.transform.position = new Vector3(a_obj.transform.position.x, a_obj.transform.position.y + a_obj.GetComponent<Renderer>().bounds.extents.y + 2.0f, a_obj.transform.position.z);
 			}
 		}
@@ -172,6 +173,7 @@ public class PedestrianSystem : MonoBehaviour
 		{
 			if(TooltipEdit)
 			{
+                        
 				ShowTooltip(Tooltip.EDIT, a_show);
 				TooltipEdit.transform.position = new Vector3(a_obj.transform.position.x, a_obj.transform.position.y + a_obj.GetComponent<Renderer>().bounds.extents.y + 2.4f, a_obj.transform.position.z);
 			}
@@ -195,7 +197,7 @@ public class PedestrianSystem : MonoBehaviour
 	{
 		PedestrianNode useEditNode   = null;
 		PedestrianNode useAnchorNode = null;
-
+        Debug.Log("tutaj");
 		if(EditNode)
 			useEditNode = EditNode;
 		else if(PreviousEditNode)
@@ -208,19 +210,22 @@ public class PedestrianSystem : MonoBehaviour
 
 		if(m_linkBothDir)
 		{
-			if(useAnchorNode)
+            Debug.Log("jestem w m_linkBothDir ");
+            if (useAnchorNode)
 				useAnchorNode.AddNode( useEditNode );
 			if(useEditNode)
 				useEditNode.AddNode( useAnchorNode );
 		}
 		else if(a_anchorToEdit)
 		{
+            Debug.Log("jestem w a_anchorToEdit ");
 			if(useAnchorNode)
 				useAnchorNode.AddNode( useEditNode );
 		}
 		else
 		{
-			if(useEditNode)
+            Debug.Log("jestem w else ");
+            if (useEditNode)
 				useEditNode.AddNode( useAnchorNode );
 		}
 	}

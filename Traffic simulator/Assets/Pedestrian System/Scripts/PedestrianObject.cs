@@ -260,8 +260,11 @@ public class PedestrianObject : MonoBehaviour
 
 	public void Spawn( Vector3 a_pos, PedestrianNode a_startNode )
 	{
-		transform.position = a_pos - m_offsetPosVal;
-		     m_currentNode = a_startNode;
+        if (a_startNode.canSpawn)
+        {
+            transform.position = a_pos - m_offsetPosVal;
+            m_currentNode = a_startNode;
+        }
 	}
 
 	public void DetermineSpeed( float a_speed, bool a_overrideCurrentSpeed = false )
