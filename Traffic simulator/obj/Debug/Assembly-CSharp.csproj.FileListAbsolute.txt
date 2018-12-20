@@ -1,0 +1,2 @@
+C:\GitProjekty\Traffic-simulator\Traffic simulator\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\GitProjekty\Traffic-simulator\Traffic simulator\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

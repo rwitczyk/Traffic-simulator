@@ -9,11 +9,10 @@ public class Node : MonoBehaviour {
     public Quaternion rotationOffset; // zeby obrócić o 90 stopni Y = 1 & W = 1
 
 
-    private GameObject elementDrogi;
-    private bool test = true; // do testowania 
-                              //private isNodeEmpty
+    [Header("Opcjonalny parametr")]
+    public GameObject elementDrogi;
 
-
+  
     private Renderer rend;
     private Color startColor; // początkowy kolor siatki
 
@@ -27,38 +26,32 @@ public class Node : MonoBehaviour {
 
         buildManager = BuildManager.instance;
     }
-
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + possitionOffset;
+    }
+    
     private void OnMouseDown()
     {
+       
         if (EventSystem.current.IsPointerOverGameObject())// po to żeby nie budować na siatce jak wybieramy element do budowania a akurat menu wyboru jest nad siatką 
+        {
+            Debug.Log(" klikasz w siatkę przez element sklepu ");
+            return;
+        }
+
+        if (!buildManager.CanBuild)
             return;
 
-        if (buildManager.GetelementDrogiDoZbudowania() == null)
-            return;
-        
         if (elementDrogi != null)
         {
             Debug.Log("W tym miejscu istnieje juz element drogi !!!!"); // zmienić żeby się wyświetlało na ekranie a nie na konsli 
+           // buildManager.SelectNode(this);
             return;
         }
-        if (isEnoghtPlace((int)rend.transform.position.x / 15, (int)rend.transform.position.z / 15))
-        {
-            GameObject elementDrogiDoZbudowania = BuildManager.instance.GetelementDrogiDoZbudowania();
-            elementDrogi = (GameObject)Instantiate(elementDrogiDoZbudowania, transform.position + possitionOffset, transform.rotation * rotationOffset);
-            takeYourDamnPlace((int)rend.transform.position.x / 15, (int)rend.transform.position.z / 15);
-            elementDrogi.transform.SetParent(rend.transform);// elementu siatki jako parenta do elementu drogi 
-            Debug.Log(elementDrogi.name);
-
-        }
-        //Debug.Log("x : " + rend.transform.position.x + " z : " + rend.transform.position.z);//pozycja aktualnie klikanego noda
-        //Debug.Log("x : " + rend.transform.position.x / 15 + " z : " + rend.transform.position.z / 15);// pozycja w tablicy
-        //Debug.Log(BuildManager.instance.getIsNodeEmpty((int)rend.transform.position.x / 15, (int)rend.transform.position.z / 15));
-        // Debug.Log(elementDrogi.transform.name);//to dodałem 
-        //Debug.Log(rend.transform.worldToLocalMatrix);//to też 
-
-        //Debug.Log();
+        buildManager.BuildElementDrogiOn(this);
     }
-
+    //NewtonSoftJSon.dll
     //TODO
     //1) przerobić funkcje void takeYourDamnPlace(int x, int z) i isEnoghtPlace(int x, int z) tak żeb offsety
     //   dostosowały do nazwy budowanego elementu
@@ -67,11 +60,24 @@ public class Node : MonoBehaviour {
     //4) opierdolić banana żeby wykminił drogę 4pasy do 2 pasy jakoś bardziej kwadratowo 
     //5) dorobić żeby się zaznaczał pod myszką taki obszar na jakim stawiamy ( LINIA 134)
 
-    void takeYourDamnPlace(int x, int z)// tylko do modelu 5x5 zajmuje odpowiednią ilość miejsca dla danego modelu
+    void takeYourDamnPlace(int x, int z, string modelName)// tylko do modelu 5x5 zajmuje odpowiednią ilość miejsca dla danego modelu
     {
-        for (int i = x - 2; i <= x + 2; i++)
+
+        int offset;
+       
+
+        if (modelName == "skrzyzowanie_2jezdniowe" || modelName == "skrzyzowanie_2jezdniowe(clone)" ||
+            modelName == "skrzyzowanie_4jezdniowe" || modelName == "skrzyzowanie_4jezdniowe(clone)")
+            offset = 2;
+        else if (modelName == "droga4pasy" || modelName == "droga4pasy(clone)")
+            offset = 1;
+        else if (modelName == "droga_2jezdniowa" || modelName == "droga_2jezdniowa(clone)")
+            offset = 0;
+        else
+            offset = 0;
+        for (int i = x - offset; i <= x + offset; i++)
         {
-            for (int j = z - 2; j <= z + 2; j++)
+            for (int j = z - offset; j <= z + offset; j++)
             {
                 BuildManager.instance.setIsNodeEmptyFalse(i, j);
                 //Debug.Log(i + " " + j);
@@ -81,17 +87,46 @@ public class Node : MonoBehaviour {
 
     }
 
-    bool isEnoghtPlace(int x, int z)// tylko do modelu 5x5
+    bool isEnoghtPlace(int x, int z, string modelName)// tylko do modelu 5x5
     {
+
+        int offset;
         bool result = true;
 
-        if (x >= 29 || x <= 1 || z >= 29 || z <= 1)// gdy mamy model 5x5 sprawdzenie czy nie wychodzimy poza mape 
+        if (modelName == "skrzyzowanie_2jezdniowe" || modelName == "skrzyzowanie_2jezdniowe(clone)" ||
+            modelName == "skrzyzowanie_4jezdniowe" || modelName == "skrzyzowanie_4jezdniowe(clone)")
+            offset = 2;
+        else if (modelName == "droga4pasy" || modelName == "droga4pasy(clone)")
+            offset = 1;
+        else if (modelName == "droga_2jezdniowa" || modelName == "droga_2jezdniowa(clone)")
+            offset = 0;
+
+        else
+            offset = 0;
+       /* switch (modelName)
+        {
+            case "skrzyzowanie_2jezdniowe":
+                offset = 2;
+                Debug.Log("Jestem na 1");
+                    break;
+            case "droga_2jezdniowa":
+                offset = 0;
+                Debug.Log("Jestem na 2");
+                break;
+            default:
+                offset = 0;
+                Debug.Log("Jestem na defaulcie");
+                break;
+
+        }*/
+
+        if (x < offset || z < offset || x >= BuildManager.instance.GetWys() - offset || z >= BuildManager.instance.GetSzer() - offset)// gdy mamy model 5x5 sprawdzenie czy nie wychodzimy poza mape 
             return false;
         else
         {
-            for (int i = x - 2; i <= x + 2; i++)
+            for (int i = x - offset; i <= x + offset; i++)
             {
-                for (int j = z - 2; j <= z + 2; j++)
+                for (int j = z - offset; j <= z + offset; j++)
                 {
                     if (!BuildManager.instance.getIsNodeEmpty(i, j))
                         result = false;
@@ -101,58 +136,17 @@ public class Node : MonoBehaviour {
         }
     }
 
-   /* bool isEnoghtPlace(int x, int z)// metoda sprawdzająca czy jest wystarczająco dużo miejsca na siatce, żeby wstawić element
-    {
-        if (x >= 29 || x <= 0 || z >= 29 || z <= 0)
-            return false;
-        else
-        {
-            if (BuildManager.instance.getIsNodeEmpty(x, z) && //0
-            BuildManager.instance.getIsNodeEmpty(x - 1, z) && //1
-            BuildManager.instance.getIsNodeEmpty(x - 1, z + 1) && //2
-            BuildManager.instance.getIsNodeEmpty(x, z + 1) && //3
-            BuildManager.instance.getIsNodeEmpty(x + 1, z + 1) && //4
-            BuildManager.instance.getIsNodeEmpty(x + 1, z) && //5
-            BuildManager.instance.getIsNodeEmpty(x + 1, z - 1) && //6
-            BuildManager.instance.getIsNodeEmpty(x, z - 1) && //7
-            BuildManager.instance.getIsNodeEmpty(x - 1, z - 1)) //8
-                return true;
-            else
-                return false;
-        }
-    }*/
-	/*
-	public void OnMouseEnter() 
-    {
-        if (isEnoghtPlace((int)rend.transform.position.x / 15, (int)rend.transform.position.z / 15))   
-            rend.material.color = hoverColor_if_empty;
-        else
-            rend.material.color = hoverColor;
-        //  Debug.Log(rend.bounds.center.x);
-    }
-	
-	*/
-
-
+ 
     void OnMouseEnter() 
     {
+               
         if (EventSystem.current.IsPointerOverGameObject())// po to żeby nie budować na siatce jak wybieramy element do budowania a akurat menu wyboru jest nad siatką 
             return;
 
-        if (buildManager.GetelementDrogiDoZbudowania() == null)
+        if (!buildManager.CanBuild)
             return;
 
-        //rend.material.color = hoverColor;
-		
-		 if (isEnoghtPlace((int)rend.transform.position.x / 15, (int)rend.transform.position.z / 15))   
-            rend.material.color = hoverColor_if_empty;
-        else
             rend.material.color = hoverColor;
-       // BuildManager.instance.Getsiatka((int)rend.transform.position.x / 15, (int)rend.transform.position.z / 15 + 15).GetComponent<Renderer>().material.color = hoverColor;
-       //POMYSŁ DOBRY TYLKO DOROBIĆ PĘTLE JAKĄŚ DO TEGO ALBO CUŚ I WARUNKI 
-        //Debug.Log(rend.transform.position.x);
-        //Debug.Log(rend.transform.position.z);
-        // Debug.Log(rend.bounds.center.x);
     }
 
     void OnMouseExit()

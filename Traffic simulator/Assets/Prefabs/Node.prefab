@@ -109,6 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor_if_empty: {r: 0.2329022, g: 0.9528302, b: 0.013483422, a: 0}
-  hoverColor: {r: 0.4528302, g: 0.023495909, b: 0.023495909, a: 0}
+  hoverColor: {r: 0.9056604, g: 0.029903898, b: 0.029903898, a: 0}
   possitionOffset: {x: 0, y: 1, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0, w: 0}

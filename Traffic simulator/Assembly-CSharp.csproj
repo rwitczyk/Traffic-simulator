@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\BuildManager.cs" />
     <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\ElementDrogi.cs" />
+    <Compile Include="Assets\JsonHelper.cs" />
     <Compile Include="Assets\Node.cs" />
     <Compile Include="Assets\Shop.cs" />
     <Reference Include="UnityEditor.StandardEvents">
