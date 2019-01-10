@@ -2,14 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class PedestrianNode : MonoBehaviour 
 {
 	public  List<PedestrianNode>        m_nodes              = new List<PedestrianNode>();
 	public  bool                        m_waitAtNode         = false;
 	public  int                         m_pathID             = 1;
+    private float rangeSqr = 0.1f;
+    public bool canSpawn = false;
+    private Collider[] colliders;
+    public List<Collider> coliderList;
+    public bool Dest_Node = true;
+    public bool Start_Node = false;
 
-	void Awake () 
+    public bool isEnabled = true;
+    string nazwa_obiektu = "";
+
+    void Awake () 
 	{
 		#if !UNITY_EDITOR
 			if(Application.isPlaying)
@@ -22,10 +31,32 @@ public class PedestrianNode : MonoBehaviour
 	
 	void Start () 
 	{
-		
-	}
 
-	public void AddNode ( PedestrianNode a_node ) 
+        colliders = Physics.OverlapSphere(transform.position, rangeSqr);
+        foreach (Collider c in colliders)
+            if (c.transform.GetComponent<PedestrianNode>() != null)
+            {
+                if(!c.gameObject.name.Equals(this.gameObject.name))
+                coliderList.Add(c);
+
+
+            }
+     
+/*
+                if (gameObject.GetComponent<PedestrianNode>().Equals(c))
+            { if(GameObject.ReferenceEquals( firstGameObject, secondGameObject))
+                coliderList.Add(c);
+            }
+
+    */
+    }
+
+    private void Update()
+    {
+     
+    }
+
+    public void AddNode ( PedestrianNode a_node ) 
 	{
 		if(NodeExists(a_node))
 			return;
@@ -91,12 +122,15 @@ public class PedestrianNode : MonoBehaviour
 
 	public void SpawnNode( Vector3 a_pos, bool a_isConnected = true )
 	{
-		PedestrianNode node     = Instantiate(PedestrianSystem.Instance.m_nodePrefab) as PedestrianNode;
-		node.transform.parent   = PedestrianSystem.Instance.transform;
-		node.transform.position = a_pos;
+        if (canSpawn)
+        {
+            PedestrianNode node = Instantiate(PedestrianSystem.Instance.m_nodePrefab) as PedestrianNode;
+            node.transform.parent = PedestrianSystem.Instance.transform;
+            node.transform.position = a_pos;
 
-		if(a_isConnected)
-			AddNode(node);
+            if (a_isConnected)
+                AddNode(node);
+        }
 	}
 
 	public void CleanupNodes()
@@ -141,4 +175,29 @@ public class PedestrianNode : MonoBehaviour
 			}
 		}
 	}
+   void OnTriggerEnter(Collider collison)
+    {
+
+        nazwa_obiektu = collison.gameObject.name;
+        // Debug.Log(nazwa_obiektu);
+        if (isEnabled)
+        {
+            if (collison.gameObject.name.Substring(0, 14) == "PedestrianNode") //dziala
+            {
+                Debug.Log(collison.gameObject.name);
+                Debug.Log("Jestem w setEdit");
+
+                //jezeli ma byc kotwica
+                //PedestrianSystem.Instance.SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, PedestrianNode);
+
+                //jezeli ma byc klucz
+                PedestrianSystem.Instance.SetPedestrianNode(PedestrianSystem.Tooltip.EDIT, gameObject.GetComponent(typeof(PedestrianNode)) as PedestrianNode);
+
+                //yield return new WaitForSeconds(0.1f);
+
+                PedestrianSystem.Instance.LinkNode();
+            }
+        }
+    }
+    
 }

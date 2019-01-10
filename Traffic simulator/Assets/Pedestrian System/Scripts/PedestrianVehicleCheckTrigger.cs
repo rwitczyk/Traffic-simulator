@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 [RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (BoxCollider))]
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class PedestrianVehicleCheckTrigger : MonoBehaviour 
 {
 	public  PedestrianNode     m_node                             = null;        // the node that holds this vehilecheck script

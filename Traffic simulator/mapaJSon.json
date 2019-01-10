@@ -1,0 +1,173 @@
+{
+    "Items": [
+        {
+            "prefab": {
+                "instanceID": 3052
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 90.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 135.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 150.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 165.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 180.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 195.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 210.0,
+                "y": 1.0,
+                "z": 120.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 105.0,
+                "y": 1.0,
+                "z": 210.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 120.0,
+                "y": 1.0,
+                "z": 210.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 135.0,
+                "y": 1.0,
+                "z": 210.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 165.0,
+                "y": 1.0,
+                "z": 210.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 150.0,
+                "y": 1.0,
+                "z": 210.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 2702
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 180.0,
+                "y": 1.0,
+                "z": 210.0
+            },
+            "width": 0,
+            "height": 0
+        }
+    ]
+}
