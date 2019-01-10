@@ -39,8 +39,8 @@ public class BuildManager : MonoBehaviour {
                 
             }
         }
-      LoadMap("test.json"); //############################# LOAD MAP ###################################################
-     
+     // LoadMap("test.json"); //############################# LOAD MAP ###################################################
+       // Debug.Log(skrzyzowanie_2jezdniowe.GetInstanceID());
        
     }
 
@@ -48,14 +48,16 @@ public class BuildManager : MonoBehaviour {
     {
         string jsonLoadedMap = File.ReadAllText(path); // pobieramy mape z Jsona do stringa 
         ElementDrogi[] loadedMap = JsonHelper.FromJson<ElementDrogi>(jsonLoadedMap); // zamiana z Jsona na tablice naszych elementów na drodze
+       // Debug.Log(jsonLoadedMap);
 
         for (int k = 0; k < loadedMap.Length; k++)// kreator tworzy mape na podstawie tablicy 
         {
-            GameObject wczytanyElementDrogi = (GameObject)Instantiate(loadedMap[k].prefab, loadedMap[k].position, Quaternion.identity);
+           //Debug.Log(loadedMap[k].prefab);
+           GameObject wczytanyElementDrogi = (GameObject)Instantiate(loadedMap[k].prefab, loadedMap[k].position, Quaternion.identity);
         }
     }
 
-
+    
     public GameObject skrzyzowanie_2jezdniowe;
     public GameObject droga_2jezdniowa;
     public GameObject skrzyzowanie_4jezdniowe;
@@ -84,7 +86,7 @@ public class BuildManager : MonoBehaviour {
         mapa.Add(element);// dodajemy stworzony przez nas element drogi do mapy
 
 
-        //StoreMap("test.json");// #################################### STORE MAP 
+        StoreMap("C:\\ProjektyUnity/mapaJSon.json");// #################################### STORE MAP 
 
         
         //Debug.Log(json);
