@@ -6,20 +6,20 @@ using UnityEngine;
 public class Collision_Node_setEdit : MonoBehaviour
 {
     string nazwa_obiektu = "";
-<<<<<<< HEAD
+    //<<<<<<< HEAD
     bool isEnabled = false;
 
-=======
->>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
+    //=======
+    //>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
 
     //IEnumerator
     void OnTriggerEnter(Collider collison)
     {
 
         nazwa_obiektu = collison.gameObject.name;
-<<<<<<< HEAD
+        //<<<<<<< HEAD
         // Debug.Log(nazwa_obiektu);
-        if(isEnabled){
+        if (isEnabled) {
             if (collison.gameObject.name.Substring(0, 14) == "PedestrianNode") //dziala
             {
                 Debug.Log(collison.gameObject.name);
@@ -43,7 +43,8 @@ public class Collision_Node_setEdit : MonoBehaviour
 
 }
 
-=======
+/*
+//=======
        // Debug.Log(nazwa_obiektu);
 
         if (collison.gameObject.name.Substring(0, 14) == "PedestrianNode") //dziala
@@ -66,4 +67,5 @@ public class Collision_Node_setEdit : MonoBehaviour
     }
 
 }
->>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
+//>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
+*/

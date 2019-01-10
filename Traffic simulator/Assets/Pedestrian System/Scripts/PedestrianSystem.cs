@@ -7,7 +7,7 @@ using System.IO;
 //[ExecuteInEditMode]
 public class PedestrianSystem : MonoBehaviour
 {
-<<<<<<< HEAD
+//<<<<<<< HEAD
     public static PedestrianSystem Instance { get; set; }
 
     public bool m_showGizmos = true;
@@ -482,6 +482,7 @@ public class PedestrianSystem : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*
 #if !UNITY_EDITOR
 =======
 	public static PedestrianSystem Instance { get; set; }
@@ -764,7 +765,7 @@ public class PedestrianSystem : MonoBehaviour
 		#if !UNITY_EDITOR
 >>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
 		return;
-#endif
+#endif */
 
         if (CLRevealObjectsFrom.Count > 0 && CLRevealObjectsFrom.Count == CLRevealObjectsTo.Count)
         {
