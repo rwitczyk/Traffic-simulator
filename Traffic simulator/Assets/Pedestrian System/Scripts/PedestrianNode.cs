@@ -9,15 +9,23 @@ public class PedestrianNode : MonoBehaviour
 	public  bool                        m_waitAtNode         = false;
 	public  int                         m_pathID             = 1;
     private float rangeSqr = 0.1f;
+<<<<<<< HEAD
     public bool canSpawn = false;
+=======
+    public bool canSpawn = true;
+>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
     private Collider[] colliders;
     public List<Collider> coliderList;
     public bool Dest_Node = true;
     public bool Start_Node = false;
+<<<<<<< HEAD
 
     public bool isEnabled = true;
     string nazwa_obiektu = "";
 
+=======
+    
+>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
     void Awake () 
 	{
 		#if !UNITY_EDITOR
