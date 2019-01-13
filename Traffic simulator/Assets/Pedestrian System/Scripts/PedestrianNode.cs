@@ -9,23 +9,43 @@ public class PedestrianNode : MonoBehaviour
 	public  bool                        m_waitAtNode         = false;
 	public  int                         m_pathID             = 1;
     private float rangeSqr = 0.1f;
-//<<<<<<< HEAD
-   // public bool canSpawn = false;
-//=======
-    public bool canSpawn = true;
-//>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
+
+    public bool canSpawn = false;
+
     private Collider[] colliders;
     public List<Collider> coliderList;
     public bool Dest_Node = true;
     public bool Start_Node = false;
-//<<<<<<< HEAD
+    //<<<<<<< HEAD
+    private static bool key = false;
+    private static bool anchor = false;
 
     public bool isEnabled = true;
     string nazwa_obiektu = "";
 
 //=======
-    
-//>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
+
+    public bool Get_Is_Key()
+    {
+        return key;
+    }
+
+    public void Set_Is_Key(bool value)
+    {
+        key = value;
+    }
+
+    public bool Get_Is_Anchor()
+    {
+        return anchor;
+    }
+
+    public void Set_Is_Anchor(bool value)
+    {
+        anchor = value;
+    }
+
+
     void Awake () 
 	{
 		#if !UNITY_EDITOR
@@ -183,9 +203,11 @@ public class PedestrianNode : MonoBehaviour
 			}
 		}
 	}
+
+
    void OnTriggerEnter(Collider collison)
     {
-
+        /*
         nazwa_obiektu = collison.gameObject.name;
         // Debug.Log(nazwa_obiektu);
         if (isEnabled)
@@ -206,6 +228,7 @@ public class PedestrianNode : MonoBehaviour
                 PedestrianSystem.Instance.LinkNode();
             }
         }
+        */
     }
     
 }

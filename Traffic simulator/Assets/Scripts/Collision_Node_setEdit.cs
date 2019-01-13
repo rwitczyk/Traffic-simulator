@@ -7,7 +7,6 @@ public class Collision_Node_setEdit : MonoBehaviour
 {
     string nazwa_obiektu = "";
     //<<<<<<< HEAD
-    bool isEnabled = false;
 
     //=======
     //>>>>>>> e828daf7e964ac79fb05d0a387a773f247e3e2b3
@@ -15,11 +14,10 @@ public class Collision_Node_setEdit : MonoBehaviour
     //IEnumerator
     void OnTriggerEnter(Collider collison)
     {
-
+        /*
         nazwa_obiektu = collison.gameObject.name;
         //<<<<<<< HEAD
         // Debug.Log(nazwa_obiektu);
-        if (isEnabled) {
             if (collison.gameObject.name.Substring(0, 14) == "PedestrianNode") //dziala
             {
                 Debug.Log(collison.gameObject.name);
@@ -35,9 +33,8 @@ public class Collision_Node_setEdit : MonoBehaviour
 
                 PedestrianSystem.Instance.LinkNode();
             }
-        }
 
-
+    */
 
     }
 
