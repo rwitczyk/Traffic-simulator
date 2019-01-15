@@ -1,0 +1,43 @@
+{
+    "Items": [
+        {
+            "prefab": {
+                "instanceID": 3496
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 60.0,
+                "y": 1.0,
+                "z": 75.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3496
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 165.0,
+                "y": 1.0,
+                "z": 75.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3496
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 255.0,
+                "y": 1.0,
+                "z": 75.0
+            },
+            "width": 0,
+            "height": 0
+        }
+    ]
+}

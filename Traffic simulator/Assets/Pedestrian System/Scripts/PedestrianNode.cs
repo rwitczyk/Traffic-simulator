@@ -22,8 +22,9 @@ public class PedestrianNode : MonoBehaviour
 
     public bool isEnabled = true;
     string nazwa_obiektu = "";
+    public bool flaga = false;
 
-//=======
+    //=======
 
     public bool Get_Is_Key()
     {

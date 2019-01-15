@@ -110,7 +110,7 @@ public class PedestrianSystem : MonoBehaviour
 
         //arrayOfPedestrianNodes[0].canSpawn = false;
         //LoadMap("C:\\ProjektyUnity/mapaJSon.json");
-        LoadMap("mapaJSon.json");
+       LoadMap("mapaJSon.json");
 
 
         //Debug.Log("Numer instancji skrzyzowanie_2jezdniowe = " + skrzyzowanie_2jezdniowe.GetInstanceID()); //Numer instancji skrzyzowanie_2jezdniowe = 3458
@@ -151,8 +151,8 @@ public class PedestrianSystem : MonoBehaviour
             new Vector3(-3, 2, 37.5f),//5
             new Vector3(-3, 2, 8),//6
             new Vector3(-4, 2, 4),//7
-            new Vector3(-7, 2, 2),//8
-            new Vector3(-37.5f, 2, 2),//9
+            new Vector3(-7, 2, 3),//8
+            new Vector3(-37.5f, 2, 3),//9
             new Vector3(-37.5f, 2, -3),//10
             new Vector3(-7, 2, -3),//11
             new Vector3(-4, 2, -4),//12
@@ -187,6 +187,13 @@ public class PedestrianSystem : MonoBehaviour
             }
 
         }
+        LinkNodes(listOfNodes[6], listOfNodes[20]);// skręt z góry w lewo   
+        LinkNodes(listOfNodes[20], listOfNodes[18]);
+
+        LinkNodes(listOfNodes[11], listOfNodes[20]);// z góry w lewo
+        LinkNodes(listOfNodes[20], listOfNodes[3]);
+
+        
         /* listOfNodes[3].canSpawn = true;
 
          SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, listOfNodes[1] as PedestrianNode);
@@ -252,25 +259,37 @@ public class PedestrianSystem : MonoBehaviour
 
 
 
-
     public void Link_All_Nodes(List<PedestrianNode> lista)
     {
         int length = lista.Count;
-        for (int i=0;i<length;i++)
+        for (int i = 0; i < length; i++)
         {
-            for(int j=0;j<length;j++)
+            for (int j = 0; j < length; j++)
             {
-                if(lista[i].transform.position.Equals(lista[j].transform.position))
+                if (lista[i].transform.position.Equals(lista[j].transform.position) && lista[i].flaga == false && lista[i].flaga == false)
                 {
-                        SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, lista[j] as PedestrianNode);
+                    if (lista[i].m_nodes.Count == 0)
+                    {
+                        Debug.Log("NULL: " + lista[j].m_nodes.Equals(null));
+                        SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, lista[i] as PedestrianNode);
+                        SetPedestrianNode(PedestrianSystem.Tooltip.EDIT, lista[j] as PedestrianNode);
+                    }
+                    else
+                    {
+                        Debug.Log(lista[j].m_nodes.Equals(null));
                         SetPedestrianNode(PedestrianSystem.Tooltip.EDIT, lista[i] as PedestrianNode);
+                        SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, lista[j] as PedestrianNode);
+                    }
 
                     Instance.LinkNode();
+
+
+                    lista[i].flaga = true;
+                    lista[j].flaga = true;
                 }
             }
         }
     }
-
 
 
 
@@ -566,4 +585,6 @@ public class PedestrianSystem : MonoBehaviour
             }
         }
     }
+
+ 
 }
