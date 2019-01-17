@@ -8,12 +8,13 @@ public class PedestrianObject : MonoBehaviour
 
 	public  PedestrianNode                      m_currentNode         = null;                 // the current node that the pedestrian object will travel to 
 	public  float                               m_minSpeed            = 1.0f;                 // the minimum speed that the pedestrian object will travel at              
-	public  float                               m_maxSpeed            = 1.0f;                 // the maximum speed that the pedestrian object will travel at 
+	public  float                               m_maxSpeed            = 1.5f;                 // the maximum speed that the pedestrian object will travel at 
 	[Range(0.0f, 1.0f)]
 	public  float                               m_percentageOfSpeedToUse = 1.0f;              // 100% uses the entire values from min to max speed. 34% would only use from min to 35% of max speed. Set this to make objects use a certain amount of the full min / max speed value (currently up to 34% allows for walking animation only) 
 	protected float                             m_speed               = 0.0f;                 // the speed that the pedestrian object will travel at            
 	private float                               m_speedStoredWhileWaiting = 0.0f;             // used to record a speed when a node is telling the object to wait ( m_waitAtNode = true )            
 	protected float                             m_currentSpeed        = 0.0f;                 // this is always our current speed
+    public float                                m_speedAfterCollision = 1.0f;
 	public  float                               m_startMovingDelayMin = 0.0f;                 // this is the minium delay the object will wait before it starts moving
 	public  float                               m_startMovingDelayMax = 0.0f;                 // this is the maxium delay the object will wait before it starts moving
 	public  float                               m_rotationSpeed       = 3.5f;                 // the speed at which we will rotaion
@@ -40,7 +41,13 @@ public class PedestrianObject : MonoBehaviour
 	protected float                             m_speedVariation      = 0.0f;
 
 	private bool                                ThresholdReached     { get; set; }
-   
+
+    float timer = 0.0f;
+    private int seconds = 0;
+    private int temp = 0;
+
+    public bool toDestroy = false;
+
     public enum PathingStatus
 	{
 		RANDOM = 0
@@ -58,6 +65,7 @@ public class PedestrianObject : MonoBehaviour
 
 		if(PedestrianSystem.Instance)
 			PedestrianSystem.Instance.RegisterObject( this );
+
 	}
 	
 	IEnumerator Start () 
@@ -96,6 +104,20 @@ public class PedestrianObject : MonoBehaviour
     }
     void Update()
     {
+        timer += Time.deltaTime;
+        seconds = (int)timer % 60;
+        //Debug.Log("SEKUNDA: " + seconds);
+       // Debug.Log("TEMP: " + temp);
+        if (seconds==(temp+1))
+        {
+            if (m_currentSpeed < 4)
+            {
+                DetermineSpeed(m_currentSpeed + 0.5f, true);
+                temp = seconds;
+          //      Debug.Log(seconds);
+            //Debug.Log(m_currentSpeed);
+            }
+        }
 
         if (!m_currentNode)
         {
@@ -168,8 +190,60 @@ public class PedestrianObject : MonoBehaviour
 
 
 
+        //Debug.Log(seconds);
+        m_speedAfterCollision = m_currentSpeed;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        Vector3 right = transform.TransformDirection(Vector3.right);
+        RaycastHit hit,hit2;
+        //   float second = 1;
+        if (Physics.Raycast(transform.position, fwd,out hit,3))
+        {
+            if (hit.collider.gameObject.name.Substring(0, 14).Equals("PederastianCar"))
+            {
+                // print("Kolizja detected!");
+                if (m_currentSpeed > 0)
+                {
+                    // Debug.Log(seconds);
+                    m_currentSpeed = 0;
+                    Start_car();
+                }
+            }
+        }
+
+        if(Physics.Raycast(transform.position,right,out hit2,3))
+        {
+            if (hit2.collider.gameObject.name.Substring(0, 14).Equals("PederastianCar"))
+            {
+                if (m_currentSpeed > 0)
+                {
+                    // Debug.Log(seconds);
+                    m_currentSpeed = 0;
+                    Start_car2();
+                }
+            }
+
+        }
     }
 
+    void Start_car()
+    {
+        //  if(m_speedAfterCollision>m_currentSpeed)
+        //  {
+        DetermineSpeed(m_currentSpeed + 0.1f, true);
+        // Debug.Log(m_currentSpeed);
+        //   }
+        // Debug.Log(seconds);
+    }
+
+    void Start_car2()
+    {
+        //  if(m_speedAfterCollision>m_currentSpeed)
+        //  {
+        DetermineSpeed(m_currentSpeed, true);
+        // Debug.Log(m_currentSpeed);
+        //   }
+        // Debug.Log(seconds);
+    }
 
     void Update2()
     {
@@ -241,16 +315,16 @@ public class PedestrianObject : MonoBehaviour
                 }
                 else
                     ThresholdReached = true;
-            
 
-         
-        
     }
 
 	void FixedUpdate()
 	{
 		DetermineAnimation();
-	}
+        
+    }
+
+
 
 	void Destroy()
 	{
@@ -259,9 +333,11 @@ public class PedestrianObject : MonoBehaviour
 	}
 
 	public void Spawn( Vector3 a_pos, PedestrianNode a_startNode )
-	{
+    {
+      
         if (a_startNode.canSpawn)
         {
+          //  print(a_startNode.gameObject.transform.position);
             transform.position = a_pos - m_offsetPosVal;
             m_currentNode = a_startNode;
         }

@@ -60,24 +60,7 @@ public class PedestrianNode : MonoBehaviour
 	
 	void Start () 
 	{
-
-        colliders = Physics.OverlapSphere(transform.position, rangeSqr);
-        foreach (Collider c in colliders)
-            if (c.transform.GetComponent<PedestrianNode>() != null)
-            {
-                if(!c.gameObject.name.Equals(this.gameObject.name))
-                coliderList.Add(c);
-
-
-            }
-     
-/*
-                if (gameObject.GetComponent<PedestrianNode>().Equals(c))
-            { if(GameObject.ReferenceEquals( firstGameObject, secondGameObject))
-                coliderList.Add(c);
-            }
-
-    */
+    
     }
 
     private void Update()
@@ -148,7 +131,7 @@ public class PedestrianNode : MonoBehaviour
 
 		return null;
 	}
-
+  
 	public void SpawnNode( Vector3 a_pos, bool a_isConnected = true )
 	{
         if (canSpawn)
@@ -161,7 +144,7 @@ public class PedestrianNode : MonoBehaviour
                 AddNode(node);
         }
 	}
-
+   
 	public void CleanupNodes()
 	{
 		for(int nIndex = m_nodes.Count - 1; nIndex >= 0; nIndex--)
@@ -206,30 +189,6 @@ public class PedestrianNode : MonoBehaviour
 	}
 
 
-   void OnTriggerEnter(Collider collison)
-    {
-        /*
-        nazwa_obiektu = collison.gameObject.name;
-        // Debug.Log(nazwa_obiektu);
-        if (isEnabled)
-        {
-            if (collison.gameObject.name.Substring(0, 14) == "PedestrianNode") //dziala
-            {
-                Debug.Log(collison.gameObject.name);
-                Debug.Log("Jestem w setEdit");
-
-                //jezeli ma byc kotwica
-                //PedestrianSystem.Instance.SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, PedestrianNode);
-
-                //jezeli ma byc klucz
-                PedestrianSystem.Instance.SetPedestrianNode(PedestrianSystem.Tooltip.EDIT, gameObject.GetComponent(typeof(PedestrianNode)) as PedestrianNode);
-
-                //yield return new WaitForSeconds(0.1f);
-
-                PedestrianSystem.Instance.LinkNode();
-            }
-        }
-        */
-    }
+  
     
 }

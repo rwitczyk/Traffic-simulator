@@ -270,13 +270,13 @@ public class PedestrianSystem : MonoBehaviour
                 {
                     if (lista[i].m_nodes.Count == 0)
                     {
-                        Debug.Log("NULL: " + lista[j].m_nodes.Equals(null));
+                        //Debug.Log("NULL: " + lista[j].m_nodes.Equals(null));
                         SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, lista[i] as PedestrianNode);
                         SetPedestrianNode(PedestrianSystem.Tooltip.EDIT, lista[j] as PedestrianNode);
                     }
                     else
                     {
-                        Debug.Log(lista[j].m_nodes.Equals(null));
+                        //Debug.Log(lista[j].m_nodes.Equals(null));
                         SetPedestrianNode(PedestrianSystem.Tooltip.EDIT, lista[i] as PedestrianNode);
                         SetPedestrianNode(PedestrianSystem.Tooltip.ANCHOR, lista[j] as PedestrianNode);
                     }
@@ -368,8 +368,8 @@ public class PedestrianSystem : MonoBehaviour
                     perNodeCount++;
                 }
             }
-        }
-
+        }       
+       
     }
 
     public void SetPedestrianNode(Tooltip a_tooltip, PedestrianNode a_obj, bool a_show = true)
@@ -469,7 +469,7 @@ public class PedestrianSystem : MonoBehaviour
     {
         PedestrianNode useEditNode = null;
         PedestrianNode useAnchorNode = null;
-        Debug.Log("tutaj");
+        //Debug.Log("tutaj");
         if (EditNode)
             useEditNode = EditNode;
         else if (PreviousEditNode)

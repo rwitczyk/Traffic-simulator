@@ -2,52 +2,273 @@
     "Items": [
         {
             "prefab": {
-                "instanceID": 3496
+                "instanceID": 3510
             },
             "name": "skrzyzowanie_2jezdniowe",
             "position": {
-                "x": 90.0,
+                "x": 60.0,
                 "y": 1.0,
-                "z": 90.0
+                "z": 240.0
             },
             "width": 0,
             "height": 0
         },
         {
             "prefab": {
-                "instanceID": 3496
+                "instanceID": 3544
             },
-            "name": "skrzyzowanie_2jezdniowe",
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 105.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 120.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
             "position": {
                 "x": 135.0,
                 "y": 1.0,
-                "z": 90.0
+                "z": 240.0
             },
             "width": 0,
             "height": 0
         },
         {
             "prefab": {
-                "instanceID": 3496
+                "instanceID": 3544
             },
-            "name": "skrzyzowanie_2jezdniowe",
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 150.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 165.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
             "position": {
                 "x": 180.0,
                 "y": 1.0,
-                "z": 90.0
+                "z": 240.0
             },
             "width": 0,
             "height": 0
         },
         {
             "prefab": {
-                "instanceID": 3496
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 195.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 210.0,
+                "y": 1.0,
+                "z": 225.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 210.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 225.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 240.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 255.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 270.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3510
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 315.0,
+                "y": 1.0,
+                "z": 240.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3510
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 315.0,
+                "y": 1.0,
+                "z": 165.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3510
             },
             "name": "skrzyzowanie_2jezdniowe",
             "position": {
                 "x": 225.0,
                 "y": 1.0,
-                "z": 90.0
+                "z": 165.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3510
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 135.0,
+                "y": 1.0,
+                "z": 165.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3510
+            },
+            "name": "skrzyzowanie_2jezdniowe",
+            "position": {
+                "x": 60.0,
+                "y": 1.0,
+                "z": 165.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 270.0,
+                "y": 1.0,
+                "z": 165.0
+            },
+            "width": 0,
+            "height": 0
+        },
+        {
+            "prefab": {
+                "instanceID": 3544
+            },
+            "name": "droga_2jezdniowa",
+            "position": {
+                "x": 180.0,
+                "y": 1.0,
+                "z": 165.0
             },
             "width": 0,
             "height": 0

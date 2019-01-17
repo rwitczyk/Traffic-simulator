@@ -2,3 +2,6 @@ sceneSetups:
 - path: Assets/Pedestrian System/Scene/MapCreator.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Pedestrian System/Scene/Demo.unity
+  isLoaded: 0
+  isActive: 0
